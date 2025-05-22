@@ -65,7 +65,76 @@ fastapi-project
 └── alembic.ini
 
 ```
+结构二
+```
+ourproject-backend
+├── alembic/
+├── app
+│   ├── auth
+│   │   ├── routes.py
+│   │   ├── schemas.py  # pydantic models
+│   │   ├── models.py  # db models
+│   │   ├── permissions.py # our decorator
+│   │   ├── exceptions.py
+│   │   ├── service.py
+│   │   └── utils.py
+│   ├── core
+│   │   ├── routes.py
+│   │   ├── services.py
+│   │   ├── ....
+│   ├── users
+│   │   ├── routes.py
+│   │   ├── services.py
+│   │   ├── ....
+│   ├── tenants
+│   │   ├── routes.py
+│   │   ├── services.py
+│   │   ├── ....
+│   ├── extensions
+│   │   ├── logs.py # JSON Logger etc
+│   │   ├── middleware.py # correlation ID & request tracker
+│   │   ├── ....
+│   ├── services
+│   │   ├── mailer.py # a client to SES
+│   │   ├── filesystem.py #  a wrapper over S3
+│   │   ├── ....
+│   ├── db
+│   │   ├── mixin.py
+│   │   ├── base.py
+│   │   ├── engine.py
+│   │   ├── ....
+│   ├── utils
+│   │   ├── schemas.py
+│   │   ├── helpers.py
+│   │   ├── ....
+│   ├── modules
+│   │   ├── module_a
+│   │   │   ├── models.py
+│   │   │   ├── routes.py
+│   │   │   ├── schemas.py
+│   │   │   ├── ....
+│   │   ├── module_b
+│   │   │   ├── models.py
+│   │   │   ├── routes.py
+│   │   │   ├── schemas.py
+│   │   │   ├── ....
+│   ├── config.py # where the Dynaconf singleton lives
+│   ├── exceptions.py
+│   ├── routes.py # registration of all system routes
+│   ├── hub.py # our event hub
+│   └── main.py
+├── tests/
+│   ├── users
+│   ├── tenants
+│   └── module_a
+├── .env
+├── .secrets.toml
+├── .gitignore
+├── settings.toml
+├── mypy.ini
+└── alembic.ini
 
+```
 ## 2. supervisor 配置
 
 ### 安装 Supervisor( Windows 不支持 )
